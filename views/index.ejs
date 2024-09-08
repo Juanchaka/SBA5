@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SBA5</title>
-  <link rel="stylesheet" href="/styles/styles.css">
-</head>
-<body>
-  <header>
-    <h1>SBA5 Blog</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="./post.ejs">Posts</a>
-    </nav>
-  </header>
-  <main>
+<% layout('layout') %>
 
-  </main>
-  <footer>
-    <p>&copy; SBA5</p>
-  </footer>
-</body>
-</html>
+<h2>Recent Posts</h2>
+<ul>
+  <% posts.forEach(post => { %>
+    <li>
+      <a href="/posts/<%= post._id %>"><%= post.title %></a> by <%= post.author.username %>
+    </li>
+  <% }) %>
+</ul>
