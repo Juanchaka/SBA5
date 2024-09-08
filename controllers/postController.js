@@ -2,7 +2,7 @@ import { getAllPosts as fetchAllPosts, getPostById as fetchPost, createPost as a
 
 export function getAllPosts (req, res) {
   const posts = fetchAllPosts();
-  res.render("posts", { title: "All Posts", posts });
+  res.render("index", { title: "All Posts", posts });
 };
 
 export function getPost (req, res) {

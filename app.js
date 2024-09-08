@@ -21,13 +21,12 @@ app.use(requestTime);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-console.log("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/', (req, res) => {
-  res.render("index", { title: "SBA5 Blog", posts: [] });
-});
+// app.get('/', (req, res) => {
+//   res.render("index", { title: "SBA5 Blog", posts: [] });
+// });
 
 app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
