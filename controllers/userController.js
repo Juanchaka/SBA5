@@ -11,3 +11,12 @@ exports.registerUser = async (req, res) => {
         res.status(500).send(err.message);
     };
 };
+
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.render("user", {users});
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+};
