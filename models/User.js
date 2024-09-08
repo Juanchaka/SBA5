@@ -1,9 +1,23 @@
-const mongoose = require("mongoose");
+import db from "../db.js";
 
-const userSchema = new mongoose.Schema({
-    username: {type: String, required: true, unique:true},
-    email: {type: String, required: true, unique: true},
-    password: {type: String, required: true}
-}, {timestamps: true});
+export function getAllUsers() {
+  return db.get("users").value();
+}
 
-module.exports = mongoose.model("User", userSchema);
+export function getUserById(id) {
+  return db.get("users").find({ id }).value();
+}
+
+export function createUser(user) {
+  db.get("users").push(user).write();
+  return user;
+}
+
+export function updateUser(id, updatedUser) {
+  db.get("users").find({ id }).assign(updatedUser).write();
+  return db.get("users").find({ id }).value();
+}
+
+export function deleteUser(id) {
+  db.get("users").remove({ id }).write();
+}

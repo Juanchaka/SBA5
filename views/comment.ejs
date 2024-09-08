@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <ul>
+      <%= comments.forEach(comment => { %>
+      <li>
+        <p><%= comment.text %></p>
+      </li>
+      <% }) %>
+    </ul>
+    <h2>Add New Comment</h2>
+    <form action="/comments" method="POST">
+      <textarea name="text" placeholder="Comment" required></textarea>
+      <button type="submit">Add Comment</button>
+    </form>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - SBA5</title>
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <header>
+    <h1>SBA5 Blog</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/posts">Posts</a>
+      <a href="/users/register">Register</a>
+    </nav>
+  </header>
+  <main>
+    <%- body %>
+  </main>
+  <footer>
+    <p>&copy; SBA Blog</p>
+  </footer>
+</body>
+</html> -->

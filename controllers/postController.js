@@ -1,54 +1,34 @@
-const Post = require('../models/Post');
-const User = require("../models/User");
-const Comment = require('../models/Comment');
+import { getAllPosts as fetchAllPosts, getPostById as fetchPost, createPost as addPost, updatePost as modifyPost, deletePost as removePost } from '../models/Post.js';
 
-exports.getAllPosts = async (req, res) => {
-  try {
-    const posts = await Post.find().populate("author", "username").exec();
-    res.render('index', { posts });
-  } catch (err) {
-    res.status(500).send(err.message);
-  };
+export function getAllPosts (req, res) {
+  const posts = fetchAllPosts();
+  res.render("posts", { title: "All Posts", posts });
 };
 
-exports.getPostById = async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id).populate("author", "usernmae").exec();
-    const comments = await Comment.find({ post: req.params.id }).populate("author", "username").exec();
-    res.render('post', {post, comments});
-  } catch (err) {
-    res.status(500).send(err.message);
-  };
+export function getPost (req, res) {
+  const post = fetchPost(req.params.id);
+  if (post) {
+    res.render("post", { post });
+  } else {
+    res.status(404).send("Post not found");
+  }
 };
 
-exports.createPost = async (req, res) => {
-    try {
-        const newPost = new Post({
-            title: req.body.title,
-            content: req.body.content,
-            author: req.body.author
-        });
-        await newPost.save();
-        res.redirect("/posts");
-    } catch (err) {
-        res.status(500).send(err.message)
-    };
+export function createPost (req, res) {
+  const newPost = addPost(req.body);
+  res.redirect(`/posts/${newPost.id}`);
 };
 
-exports.updatePost = async () => {
-    try {
-        const updatePost = await Post.findByIdAndUpdate(req.params.id, req.body, {new: true}).exec();
-        res.redirect("/posts/${updatedPost.id}");
-    } catch (err) {
-        res.status(500).send(err.message);
-    };
+export function updatePost (req, res) {
+  const updatedPost = modifyPost(req.params.id, req.body);
+  if (updatedPost) {
+    res.redirect(`/posts/${updatedPost.id}`);
+  } else {
+    res.status(404).send("Post not found");
+  }
 };
 
-exports.deletePost = async () => {
-    try {
-        await Post.findByIdAndDelete(req.params.id).exec();
-        res.redirect("/posts");
-    } catch(err) {
-        res.status(500).send(err.message);
-    };
+export function deletePost (req, res) {
+  removePost(req.params.id);
+  res.redirect("/posts");
 };

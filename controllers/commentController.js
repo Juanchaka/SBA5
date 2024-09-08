@@ -1,32 +1,34 @@
-const Comment = require("../models/Comment");
-const Post = require("../models/Post");
-const User = require("../models/User");
+import { getAllComments as fetchAllComments, getCommentById as fetchComment, createComment as addComment, updateComment as modifyComment, deleteComment as removeComment } from '../models/Comment.js';
 
-exports.createComment = async (req, res) => {
-  try {
-    const newComment = new Comment({
-      content: req.body.content,
-      post: req.body.postId,
-      author: req.body.author,
-    });
-    await newComment.save();
-    await Post.findByIdAndUpdate(req.body.postId, {
-      $push: { comments: newComment._id },
-    }).exec();
-    res.redirect(`/posts/${req.body.postId}`);
-  } catch (err) {
-    res.status(500).send(err.message);
+export function getAllComments (req, res) {
+  const comments = fetchAllComments();
+  res.render("comment", { title: "Comments", comments });
+};
+
+export function getComment (req, res) {
+  const comment = fetchComment(req.params.id);
+  if (comment) {
+    res.render("comment", { comment });
+  } else {
+    res.status(404).send("Comment not found");
   }
 };
 
-exports.deleteComment = async (req, res) => {
-  try {
-    await Comment.findByIdAndDelete(req.params.id).exec();
-    res.redirect(`/posts/${req.query.postId}`);
-  } catch (err) {
-    res.status(500).send(err.message);
+export function createComment (req, res) {
+  const newComment = addComment(req.body);
+  res.redirect(`/comments/${newComment.id}`);
+};
+
+export function updateComment (req, res) {
+  const updatedComment = modifyComment(req.params.id, req.body);
+  if (updatedComment) {
+    res.redirect(`/comments/${updatedComment.id}`);
+  } else {
+    res.status(404).send("Comment not found");
   }
 };
 
-
-//Maybe add editing feature later
+export function deleteComment (req, res) {
+  removeComment(req.params.id);
+  res.redirect("/comments");
+};

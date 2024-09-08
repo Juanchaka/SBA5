@@ -1,4 +1,27 @@
-<% layout('layout') %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <ul>
+      <% users.forEach(user => { %>
+      <li>
+        <a href="/users/<%= user.id %>"><%= user.name %></a>
+      </li>
+      <% }) %>
+    </ul>
+    <h2>Add New User</h2>
+    <form action="/users" method="POST">
+      <input type="text" name="name" placeholder="Name" required />
+      <button type="submit">Add User</button>
+    </form>
+  </body>
+</html>
+
+<!-- <% layout('layout') %>
 
 <h2>Register</h2>
 <form action="/users/register" method="POST">
@@ -12,4 +35,4 @@
   <input type="password" id="password" name="password" required>
 
   <button type="submit">Register</button>
-</form>
+</form> -->

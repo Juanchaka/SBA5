@@ -1,10 +1,23 @@
-const mongoose = require("mongoose");
+import db from '../db.js';
 
-const commentSchema = new mongoose.Schema({
-    content: {type: String, require: true},
-    post: {type: mongoose.Schema.Types.ObjectId, ref: "Post", required: true},
-    author: {type: mongoose.Schema.Types.ObjectId, ref: "User", required: true},
-    createdAt: {type: Date, default: Date.now}
-}, {timestamps: true});
+export function getAllComments() {
+  return db.get('comments').value();
+}
 
-module.exports = mongoose.model("Comment", commentSchema);
+export function getCommentById(id) {
+  return db.get('comments').find({ id }).value();
+}
+
+export function createComment(comment) {
+  db.get('comments').push(comment).write();
+  return comment;
+}
+
+export function updateComment(id, updatedComment) {
+  db.get('comments').find({ id }).assign(updatedComment).write();
+  return db.get('comments').find({ id }).value();
+}
+
+export function deleteComment(id) {
+  db.get('comments').remove({ id }).write();
+}
