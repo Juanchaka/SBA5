@@ -1,5 +1,11 @@
 {
-    "posts": [],
-    "users": [],
-    "comments": []
-  }
+  "posts": [
+    {
+      "id": 1,
+      "title": "Sample Post",
+      "content": "This is a sample post."
+    }
+  ],
+  "users": [],
+  "comments": []
+}
