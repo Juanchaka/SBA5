@@ -4,48 +4,43 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/styles/styles.css" />
   </head>
-  <body>
+  <body id="home">
     <h1><%= title %></h1>
-    <h2>Posts</h2>
-    <ul>
-      <% posts.forEach(post => { %>
-      <li>
-        <a href="/posts/<%= post.id %>"><%= post.title %></a>
-      </li>
-      <% }) %>
-    </ul>
-    <h3>Add New Post</h3>
-    <form action="/posts" method="POST">
-      <input type="text" name="title" placeholder="Title" required />
-      <textarea name="content" placeholder="Content" required></textarea>
-      <button type="submit">Add Post</button>
-    </form>
-    <h2>Users</h2>
-    <ul>
-      <% users.forEach(user => { %>
-      <li>
-        <a href="/users/<%= user.id %>"><%= user.name %></a>
-      </li>
-      <% }) %>
-    </ul>
-    <h3>Add New User</h3>
-    <form action="/users" method="POST">
-      <input type="text" name="name" placeholder="Name" required />
-      <button type="submit">Add User</button>
-    </form>
+    <div class="container">
+      <h2>Posts</h2>
+      <div class="links">
+        <a href="/posts">
+          <button>View Posts</button>
+        </a>
+        <a href="/comments">
+          <button>Add a Post</button>
+        </a>
+      </div>
   
-    <h2>Comments</h2>
-    <ul>
-      <% comments.forEach(comment => { %>
-      <li>
-        <p><%= comment.text %></p>
-      </li>
-      <% }) %>
-    </ul>
-    <h3>Add New Comment</h3>
-    <form action="/comments" method="POST">
-      <textarea name="text" placeholder="Comment" required></textarea>
-      <button type="submit">Add Comment</button>
-    </form>
+    </div>
+
+    <div class="container">
+      <h2>Users</h2>
+      <div class="links">
+        <a href="/users/">
+          <button>View Users</button>
+        </a>
+        <a href="/comments">
+          <button>Add a User</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Comments</h2>
+      <div class="links">
+        <a href="/comments/">
+          <button>View Comments</button>
+        </a>
+        <a href="/comments">
+          <button>Add a Comment</button>
+        </a>
+      </div>
+    </div>
   </body>
 </html>

@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
     const posts = await homePosts();
     const users = await homeUsers();
     const comments = await homeComments();
-    res.render("home", { title: "Home", posts, users, comments });
+    res.render("home", { title: "SBA5 BlogPost", posts, users, comments });
   } catch (err) {
     res.status(500).send(err.message);
   }
