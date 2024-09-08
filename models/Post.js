@@ -13,7 +13,7 @@ export function getAllPosts() {
 }
 
 export function getPostById(id) {
-  return (db.data.posts || []).find(post => post.id === parseInt(id, 10));
+  return (db.data.posts || []).find(post => post.id === parseInt(id));
 }
 
 export function createPost(post) {
@@ -24,7 +24,7 @@ export function createPost(post) {
 }
 
 export function updatePost(id, updatedPost) {
-  const index = (db.data.posts || []).findIndex(post => post.id === parseInt(id, 10));
+  const index = (db.data.posts || []).findIndex(post => post.id === parseInt(id));
   if (index !== -1) {
     db.data.posts[index] = { ...db.data.posts[index], ...updatedPost };
     db.write();
@@ -34,6 +34,6 @@ export function updatePost(id, updatedPost) {
 }
 
 export function deletePost(id) {
-  db.data.posts = (db.data.posts || []).filter(post => post.id !== parseInt(id, 10));
+  db.data.posts = (db.data.posts || []).filter(post => post.id !== parseInt(id));
   db.write();
 }

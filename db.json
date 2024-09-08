@@ -1,5 +1,16 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Hello ",
+      "content": "Test"
+    },
+    {
+      "id": 2,
+      "title": "test",
+      "content": "test\r\n"
+    }
+  ],
   "users": [],
   "comments": []
 }
