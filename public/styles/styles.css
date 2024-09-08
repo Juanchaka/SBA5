@@ -2,14 +2,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+body, html {
+  height: 100%;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  /* background: url("/img/sean-hwang.jpg") no-repeat center center;
+  background-size: cover; */
+  text-align: center;
 }
 
-h1 {
-  color: #333;
+h1, h2, h3 {
+  color: azure;
 }
 
 ul {
