@@ -1,6 +1,12 @@
 import db from '../db.js';
 
-let nextId = 0;
+// let nextId = 0;
+
+function getNextId() {
+  const posts = db.data.posts || [];
+  if (posts.length === 0) return 1;
+  return Math.max(...posts.map(post => post.id)) + 1;
+}
 
 export function getAllPosts() {
   return db.data.posts || [];
@@ -11,7 +17,7 @@ export function getPostById(id) {
 }
 
 export function createPost(post) {
-  const newPost = { id: nextId++, ...post };
+  const newPost = { id: getNextId(), ...post };
   db.data.posts.push(newPost);
   db.write();
   return newPost;

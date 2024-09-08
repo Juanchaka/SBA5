@@ -1,21 +1,5 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "Sample Post",
-      "content": "This is a sample post."
-    },
-    {
-      "id": 0,
-      "title": "Another test",
-      "content": "Is there an Id?"
-    },
-    {
-      "id": 0,
-      "title": "This should be another test with a different Id",
-      "content": "Lets see what the id is\r\n"
-    }
-  ],
+  "posts": [],
   "users": [],
   "comments": []
 }
