@@ -2,10 +2,13 @@ const User = require("../models/User");
 
 exports.registerUser = async (req, res) => {
     try {
-        const {username, email, password} = req.body;
-        const newUser = new User({username, email, password});
+        const newUser = new User({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password
+        });
         await newUser.save();
-        res.redirect("/users")
+        res.redirect("/");
     } catch (err) {
 
         res.status(500).send(err.message);
@@ -15,8 +18,8 @@ exports.registerUser = async (req, res) => {
 exports.getAllUsers = async (req, res) => {
     try {
         const users = await User.find();
-        res.render("user", {users});
+        res.render("users", {users});
     } catch (err) {
         res.status(500).send(err.message);
-    }
+    };
 };
