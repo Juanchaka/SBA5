@@ -13,12 +13,9 @@
       </li>
       <% }) %>
     </ul>
-    <h2>Add New Post</h2>
-    <form action="/posts" method="POST">
-      <input type="text" name="title" placeholder="Title" required />
-      <textarea name="content" placeholder="Content" required></textarea>
-      <button type="submit">Add Post</button>
-    </form>
-    <a href="/">Home</a>
+    <div>
+      <a href="/"><button>Home</button></a>
+      <a href="/posts/create"><button>Create a Post</button></a>
+    </div>
   </body>
 </html>

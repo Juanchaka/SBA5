@@ -18,9 +18,14 @@ export function getPost (req, res) {
   }
 };
 
+export function createPostForm (req, res) {
+  const success = req.query.success === "true";
+  res.render("postCreate", { title: "Create New Comment", success });
+}
+
 export function createPost (req, res) {
-  const newPost = addPost(req.body);
-  res.redirect(`/posts/${newPost.id}`);
+  const newComment = addComment(req.body);
+  res.redirect(`/posts/create?success=true`);
 };
 
 export function updatePost (req, res) {

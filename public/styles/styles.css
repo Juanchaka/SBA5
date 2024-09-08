@@ -17,6 +17,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  color: azure;
 }
 
 #home {
@@ -59,14 +60,14 @@ h1, h2, h3 {
   color: azure;
 }
 
-.links button:hover {
+button:hover {
   box-shadow: 0 0 2em rgb(202, 86, 86);
   background-color: rgba(202, 86, 86, 0.522);
   color: azure;
   cursor: pointer;
 }
 
-.links button {
+button {
   padding: .8em .7em;
   border-radius: .7em;
 }

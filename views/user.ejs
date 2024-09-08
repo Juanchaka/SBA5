@@ -13,11 +13,9 @@
       </li>
       <% }) %>
     </ul>
-    <h2>Add New User</h2>
-    <form action="/users" method="POST">
-      <input type="text" name="name" placeholder="Name" required />
-      <button type="submit">Add User</button>
-    </form>
-    <a href="/">Home</a>
+    <div>
+      <a href="/"><button>Home</button></a>
+      <a href="/users/create"><button>Create a User</button></a>
+    </div>
   </body>
 </html>

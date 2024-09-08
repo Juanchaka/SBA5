@@ -18,9 +18,14 @@ export function getComment (req, res) {
   }
 };
 
+export function createCommentForm (req, res) {
+  const success = req.query.success === "true";
+  res.render("commentCreate", { title: "Create New Comment", success });
+}
+
 export function createComment (req, res) {
   const newComment = addComment(req.body);
-  res.redirect(`/comments/${newComment.id}`);
+  res.redirect(`/comments/create?success=true`);
 };
 
 export function updateComment (req, res) {

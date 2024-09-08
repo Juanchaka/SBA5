@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <% if (success) { %>
+      <p>Comment added successfully!</p>
+    <% } %>
+    <h2>Add New Post</h2>
+    <form action="/posts" method="POST">
+        <input type="text" name="title" placeholder="Title" required />
+        <textarea name="content" placeholder="Content" required></textarea>
+        <button type="submit">Add Post</button>
+      </form>
+    <div>
+      <a href="/"><button>Home</button></a>
+    </a>
+    <a href="/posts/">
+      <button>View Posts</button>
+    </a>
+    </div>
+  </body>
+</html>

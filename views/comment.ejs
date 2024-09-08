@@ -13,11 +13,12 @@
       </li>
       <% }) %>
     </ul>
-    <h2>Add New Comment</h2>
-    <form action="/comments" method="POST">
-      <textarea name="text" placeholder="Comment" required></textarea>
-      <button type="submit">Add Comment</button>
-    </form>
-    <a href="/">Home</a>
+    <div>
+      <a href="/"><button>Home</button></a>
+    </a>
+    <a href="/comments/create">
+      <button>Create a Comment</button>
+    </a>
+    </div>
   </body>
 </html>
