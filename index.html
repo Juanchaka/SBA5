@@ -7,19 +7,6 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <h1>post.title</h1>
-    <p>post.content</p>
-    <h3>Comments</h3>
-    <ul>
-      comments.forEach(function(comment) {
-      <li>comment.content</li>
-      }
-    </ul>
-    <form action="/comments" method="POST">
-      <input type="hidden" name="postId" value="<%= post._id %>" />
-      <textarea name="content"></textarea>
-      <button type="submit">Add Comment</button>
-    </form>
     <script src="./index.js"></script>
   </body>
 </html>
