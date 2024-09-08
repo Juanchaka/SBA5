@@ -3,6 +3,9 @@ const express = require("express");
 // const bodyParser = require("body-parser");
 const path = require("path");
 const { title } = require("process");
+const postRoutes = require('./routes/postRoutes');
+const userRoutes = require('./routes/userRoutes');
+const commentRoutes = require('./routes/commentRoutes');
 
 const app = express();
 
@@ -26,6 +29,9 @@ app.get("/", (req, res) => {
     res.render("index", {title: "SBA5"});
 });
 
+app.use('/posts', postRoutes);
+app.use('/users', userRoutes);
+app.use('/comments', commentRoutes);
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send("Something's wrong!");
