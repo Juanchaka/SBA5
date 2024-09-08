@@ -1,5 +1,9 @@
 import { getAllUsers as fetchAllUsers, getUserById as fetchUser, createUser as addUser, updateUser as modifyUser, deleteUser as removeUser } from '../models/User.js';
 
+export async function homeUsers() {
+  return fetchAllUsers();
+}
+
 export function getAllUsers (req, res) {
   const users = fetchAllUsers();
   res.render("user", { title: "Users", users });
@@ -8,7 +12,7 @@ export function getAllUsers (req, res) {
 export function getUser (req, res) {
   const user = fetchUser(req.params.id);
   if (user) {
-    res.render("user", { user });
+    res.render("indexUser", { title: `User: ${user.name}`, user });
   } else {
     res.status(404).send("User not found");
   }

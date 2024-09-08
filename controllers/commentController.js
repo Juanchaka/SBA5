@@ -1,5 +1,9 @@
 import { getAllComments as fetchAllComments, getCommentById as fetchComment, createComment as addComment, updateComment as modifyComment, deleteComment as removeComment } from '../models/Comment.js';
 
+export async function homeComments() {
+  return fetchAllComments();
+}
+
 export function getAllComments (req, res) {
   const comments = fetchAllComments();
   res.render("comment", { title: "Comments", comments });
@@ -8,7 +12,7 @@ export function getAllComments (req, res) {
 export function getComment (req, res) {
   const comment = fetchComment(req.params.id);
   if (comment) {
-    res.render("comment", { comment });
+    res.render("indexComment", { title: `Comment by ${comment.author}`, comment });
   } else {
     res.status(404).send("Comment not found");
   }

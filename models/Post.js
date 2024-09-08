@@ -1,7 +1,5 @@
 import db from '../db.js';
 
-// let nextId = 0;
-
 function getNextId() {
   const posts = db.data.posts || [];
   if (posts.length === 0) return 1;
@@ -13,7 +11,7 @@ export function getAllPosts() {
 }
 
 export function getPostById(id) {
-  return (db.data.posts || []).find(post => post.id === parseInt(id));
+  return (db.data.posts || []).find(post => post.id === parseInt(id, 10));
 }
 
 export function createPost(post) {
@@ -24,7 +22,7 @@ export function createPost(post) {
 }
 
 export function updatePost(id, updatedPost) {
-  const index = (db.data.posts || []).findIndex(post => post.id === parseInt(id));
+  const index = (db.data.posts || []).findIndex(post => post.id === parseInt(id, 10));
   if (index !== -1) {
     db.data.posts[index] = { ...db.data.posts[index], ...updatedPost };
     db.write();
@@ -34,6 +32,6 @@ export function updatePost(id, updatedPost) {
 }
 
 export function deletePost(id) {
-  db.data.posts = (db.data.posts || []).filter(post => post.id !== parseInt(id));
+  db.data.posts = (db.data.posts || []).filter(post => post.id !== parseInt(id, 10));
   db.write();
 }

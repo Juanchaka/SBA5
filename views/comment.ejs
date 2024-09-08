@@ -7,7 +7,7 @@
   <body>
     <h1><%= title %></h1>
     <ul>
-      <%= comments.forEach(comment => { %>
+      <% comments.forEach(comment => { %>
       <li>
         <p><%= comment.text %></p>
       </li>
@@ -18,5 +18,6 @@
       <textarea name="text" placeholder="Comment" required></textarea>
       <button type="submit">Add Comment</button>
     </form>
+    <a href="/">Back to Home</a>
   </body>
 </html>

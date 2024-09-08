@@ -2,8 +2,12 @@ import { getAllPosts as fetchAllPosts, getPostById as fetchPost, createPost as a
 
 export function getAllPosts (req, res) {
   const posts = fetchAllPosts();
-  res.render("index", { title: "All Posts", posts });
+  res.render("indexPost", { title: "All Posts", posts });
 };
+
+export async function homePosts() {
+  return fetchAllPosts();
+}
 
 export function getPost (req, res) {
   const post = fetchPost(req.params.id);
