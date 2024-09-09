@@ -9,6 +9,7 @@ Features
     Users: Manage user accounts with CRUD operations.
     Custom Middleware: Includes logging, request timing, and error-handling middleware.
     Template Engine: Uses EJS for rendering dynamic views.
+    Local Database: Uses lowdb for local file-based storage.
 
 Setup
 Prerequisites
@@ -58,3 +59,7 @@ Middleware
     Logger: Logs request details to the console.
     Request Time: Adds a timestamp to the request object.
     Error Handler: Catches and handles errors.
+
+Database
+
+This application uses lowdb for local file-based storage. The database is stored in db.json, located in the root directory. lowdb provides a simple way to manage JSON files for small-scale applications.
