@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/comments/<%= comment.id %>?_method=PATCH" method="POST">
+      <textarea name="text" placeholder="Comment" required><%= comment.text %></textarea>
+      <button type="submit">Update Comment</button>
+    </form>
+    <a href="/comments">Back to Comments</a>
+  </body>
+</html>

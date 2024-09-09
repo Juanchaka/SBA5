@@ -10,8 +10,11 @@
   <a href="/posts">Back to posts</a>
   <div>
     <a href="/"><button>Home</button></a>
-    <a href="/"><button>Update</button></a>
-    <a href="/"><button>Delete</button></a>
+  </a>
+  <a href="/posts/<%= post.id %>/update"><button>Update</button></a>
+  <form action="/posts/<%= post.id %>?_method=DELETE" method="POST" style="display:inline;">
+    <button type="submit">Delete</button>
+  </form>
   </div>
 </body>
 </html>

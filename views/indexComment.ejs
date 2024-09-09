@@ -7,12 +7,14 @@
   <body>
     <h1><%= title %></h1>
     <p><strong>Author:</strong> <%= comment.author %></p>
-    <p><strong>Content:</strong> <%= comment.content %></p>
+    <p><strong>Content:</strong> <%= comment.text %></p>
     <a href="/comments">Back to Comments</a>
     <div>
       <a href="/"><button>Home</button></a>
-      <a href="/"><button>Update</button></a>
-      <a href="/"><button>Delete</button></a>
+      <a href="/comments/<%= comment.id %>/update"><button>Update</button></a>
+      <form action="/comments/<%= comment.id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
     </div>
   </body>
 </html>

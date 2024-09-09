@@ -1,4 +1,5 @@
 import express from "express";
+import methodOverride from 'method-override';
 import bodyParser from "body-parser";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -12,6 +13,7 @@ import { homePosts } from "./controllers/postController.js";
 import { homeUsers } from "./controllers/userController.js";
 import { homeComments } from "./controllers/commentController.js";
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -21,15 +23,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger);
 app.use(requestTime);
+app.use(methodOverride('_method'));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/test', (req, res) => {
-  res.render("user", { title: "Test Title", users: [] });
-});
 
 app.get('/', async (req, res) => {
   try {

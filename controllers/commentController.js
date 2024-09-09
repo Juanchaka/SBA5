@@ -23,6 +23,15 @@ export function createCommentForm (req, res) {
   res.render("commentCreate", { title: "Create New Comment", success });
 }
 
+export function updateCommentForm (req, res) {
+  const comment = fetchComment(req.params.id);
+  if (comment) {
+    res.render("commentUpdate", { title: "Update Comment", comment });
+  } else {
+    res.status(404).send("Comment not found");
+  }
+}
+
 export function createComment (req, res) {
   const newComment = addComment(req.body);
   res.redirect(`/comments/create?success=true`);
@@ -40,4 +49,4 @@ export function updateComment (req, res) {
 export function deleteComment (req, res) {
   removeComment(req.params.id);
   res.redirect("/comments");
-};
+}; 

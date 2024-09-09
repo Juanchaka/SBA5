@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/posts/<%= post.id %>?_method=PATCH" method="POST">
+      <textarea name="content" placeholder="Post" required><%= post.content %></textarea>
+      <button type="submit">Update Post</button>
+    </form>
+    <a href="/posts">Back to Posts</a>
+  </body>
+</html>

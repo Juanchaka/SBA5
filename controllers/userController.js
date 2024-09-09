@@ -24,9 +24,17 @@ export function createUserForm (req, res) {
   res.render("userCreate", { title: "Create New User", success });
 }
 
+export function updateUserForm (req, res) {
+  const user = fetchUser(req.params.id);
+  if (user) {
+    res.render("userUpdate", { title: "Update User", user });
+  } else {
+    res.status(404).send("User not found");
+  }
+}
+
 export function createUser (req, res) {
   const newUser = addUser(req.body);
-  // res.redirect(`/users/${newUser.id}`);
   res.redirect(`/users/create?success=true`);
 };
 
